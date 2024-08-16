@@ -33,26 +33,26 @@ example using **low temperature**
 
 The command :
 
-```
+```powershell
 curl -X POST "http://127.0.0.1:8000/generate" -H "Content-Type: application/json" -d '{"prompt":"Write about balarama dead","temperature":0.1,"max_tokens":250}'
 
 ```
 
 The output :
 
-```
+```powershell
 "generated_text":"Balarama died of a snakebite."
 ```
 
 if we are using **high temperature**
 
-```
+```powershell
 curl -X POST "http://127.0.0.1:8000/generate" -H "Content-Type: application/json" -d '{"prompt":"Write about balarama dead","temperature":0.9,"max_tokens":250}'
 ```
 
 The output :
 
-```
+```powershell
 "generated_text":"Balarama is killed by a hunter while he is sleeping in the forest. The hunter mistakes Balarama for a deer and shoots him with an arrow. Balarama dies instantly.\n\nBalarama's death is a great tragedy for the Yadavas. He is a beloved brother to Krishna and a respected leader of the Yadava clan. His death is a sign that the end of the Yadavas is near.\n\nAfter Balarama's death, Krishna leads the Yadavas to Kurukshetra, where they fight a great battle against the Kauravas. In the end, the Yadavas are all killed, and Krishna is the only one left alive.
 
 ```
