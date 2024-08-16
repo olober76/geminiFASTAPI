@@ -8,15 +8,17 @@ from aiohttp import ClientSession
 from aiocache import cached, Cache
 from joblib import Parallel, delayed
 
+
+# Setting up in-memory caching for API responses
 cache = Cache(Cache.MEMORY)
 
 app = FastAPI()
 
 
-
+# Configure the Google Generative AI API with your API key
 genai.configure(api_key="YOUR_API_KEY")
 
-# Set up the Google Generative AI API with your API key
+# Define an asynchronous function for generating text with retry logic and caching
 @cached(ttl=3600)
 @tenacity.retry(wait=tenacity.wait_exponential(multiplier=1, min=4, max=10), stop=tenacity.stop_after_attempt(3))
 async def generate_text_async(prompt: str, temperature: float, max_output_tokens: int):
@@ -32,21 +34,24 @@ async def generate_text_async(prompt: str, temperature: float, max_output_tokens
                     max_output_tokens=max_output_tokens
                 )
             )
-            return response
+            return response # Return the API response
         except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+            raise HTTPException(status_code=500, detail=str(e)) # Handle errors by raising an HTTP exception
 
+# Function to process incoming requests (not directly used in the API endpoint)
 def process_request(request):
     prompt = request["prompt"]
     temperature = request["temperature"]
     max_output_tokens = request["max_output_tokens"]
     return generate_text(prompt, temperature, max_output_tokens)
 
+# Define the FastAPI endpoint for text generation
 @app.post("/generate")
 async def generate_text(request: Request):
     try:
-        data = await request.json()
+        data = await request.json() # Parse the incoming JSON request
 
+        # Extract and validate input parameters
         prompt = data.get("prompt")
         temperature = data.get("temperature",0.5)
         max_output_tokens = data.get("max_output_tokens", 100)
@@ -78,4 +83,4 @@ async def generate_text(request: Request):
         }
     
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) # # Handle errors and return an HTTP 500 response
