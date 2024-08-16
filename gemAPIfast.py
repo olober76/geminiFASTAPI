@@ -15,7 +15,7 @@ cache = Cache(Cache.MEMORY)
 app = FastAPI()
 
 
-# Configure the Google Generative AI API with your API key
+# Configure the Google Generative AI API with API key
 genai.configure(api_key="YOUR_API_KEY")
 
 # Define an asynchronous function for generating text with retry logic and caching
@@ -38,7 +38,7 @@ async def generate_text_async(prompt: str, temperature: float, max_output_tokens
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e)) # Handle errors by raising an HTTP exception
 
-# Function to process incoming requests (not directly used in the API endpoint)
+# Function to process incoming requests     
 def process_request(request):
     prompt = request["prompt"]
     temperature = request["temperature"]
@@ -53,8 +53,8 @@ async def generate_text(request: Request):
 
         # Extract and validate input parameters
         prompt = data.get("prompt")
-        temperature = data.get("temperature",0.5)
-        max_output_tokens = data.get("max_output_tokens", 100)
+        temperature = data.get("temperature",0.5) # Set the parameter Default for temperature
+        max_output_tokens = data.get("max_output_tokens", 100) # Set parameter default for max_output_tokens
 
         # Basic validation
         if not prompt:
