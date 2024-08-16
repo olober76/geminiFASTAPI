@@ -21,7 +21,7 @@ genai.configure(api_key="YOUR_API_KEY")
 # Define an asynchronous function for generating text with retry logic and caching
 @cached(ttl=3600)
 @tenacity.retry(wait=tenacity.wait_exponential(multiplier=1, min=4, max=10), stop=tenacity.stop_after_attempt(3))
-async def generate_text_async(prompt: str, temperature: float, max_output_tokens: int):
+async def generate_text_async(prompt: str, temperature: float, max_output_tokens: float):
     async with ClientSession() as session:
         try:
             # Asynchronously generate text using the Google Generative AI library
@@ -53,8 +53,8 @@ async def generate_text(request: Request):
 
         # Extract and validate input parameters
         prompt = data.get("prompt")
-        temperature = data.get("temperature",0.5) # Set the parameter Default for temperature
-        max_output_tokens = data.get("max_output_tokens", 100) # Set parameter default for max_output_tokens
+        temperature = data.get("temperature") # Set the parameter for temperature
+        max_output_tokens = data.get("max_output_tokens") # Set parameter for max_output_tokens
 
         # Basic validation
         if not prompt:
@@ -64,8 +64,10 @@ async def generate_text(request: Request):
             raise HTTPException(status_code=400, detail="Temperature must be between 0 and 1.")
         
         if not (1 <= max_output_tokens <= 1000):
-            raise HTTPException(status_code=400, detail="max_output_tokens must be between 1 and 1000.")
+                raise HTTPException(status_code=400, detail="max_output_tokens must be between 1 and 1000.")
 
+        
+        
         # Generate text using the async function
         response = await generate_text_async(prompt, temperature, max_output_tokens)
         
