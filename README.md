@@ -7,7 +7,6 @@
 
 ```Powershell
     docker build -t [NAME IMAGE] .
-
 ```
 
 3. Run the Docker Container : After the image is built, run the container using
@@ -21,7 +20,8 @@
 - **Prompt**: to make question
 - **Temperature**: controls the creativity and randomness generated text (input from 0 to 1, must be float)
 - **max_output_tokens** : controls the maximum number of tokens (input from 1 to 1000, must be int)
-  the command that can use
+
+the command that can use
 
 ```Powershell
 curl -X POST "http://localhost:8000/generate" -H "Content-Type: application/json" -d '{"prompt":"WRITE_PROMPT_HERE","temperature":INSERT_TEMP_HERE,"max_output_gitokens":INSERT_TOKENS_HERE}'
@@ -81,7 +81,11 @@ curl -X POST "http://localhost:8000/generate" -H "Content-Type: application/json
 The output :
 
 ```powershell
-"generated_text":"Balarama is killed by a hunter while he is sleeping in the forest. The hunter mistakes Balarama for a deer and shoots him with an arrow. Balarama dies instantly.\n\nBalarama's death is a great tragedy for the Yadavas. He is a beloved brother to Krishna and a respected leader of the Yadava clan. His death is a sign that the end of the Yadavas is near.\n\nAfter Balarama's death, Krishna leads the Yadavas to Kurukshetra, where they fight a great battle against the Kauravas. In the end, the Yadavas are all killed, and Krishna is the only one left alive.
+"generated_text":"Balarama is killed by a hunter while he is sleeping in the forest. The hunter mistakes Balarama for a
+deer and shoots him with an arrow. Balarama dies instantly.\n\nBalarama's death is a great tragedy for the Yadavas.
+He is a beloved brother to Krishna and a respected leader of the Yadava clan. His death is a sign that the end of
+the Yadavas is near.\n\nAfter Balarama's death, Krishna leads the Yadavas to Kurukshetra, where they fight a great
+battle against the Kauravas. In the end, the Yadavas are all killed, and Krishna is the only one left alive.
 ```
 
 3. **Max Output Tokens**: This parameter controls the maximum number of tokens (words or characters) in the generated text.
@@ -100,7 +104,11 @@ curl -X POST "http://localhost:8000/generate" -H "Content-Type: application/json
 The output :
 
 ```powershell
-"generated_text":"Greece has a long and rich history dating back over 3,000 years. The first major civilization in Greece was the Minoan civilization, which flourished on the island of Crete from around 2700 to 1450 BC. The Minoans were a seafaring people who traded with other civilizations around the Mediterranean Sea. They built large palaces and had a sophisticated writing system.\n\nThe Minoan civilization was destroyed by a volcanic eruption around 1450"
+"generated_text":"Greece has a long and rich history dating back over 3,000 years. The first major civilization in Greece was the Minoan
+civilization, which flourished on the island of Crete from around 2700 to 1450 BC. The Minoans were a seafaring people who
+traded with other civilizations around the Mediterranean Sea. They built large palaces and had a sophisticated writing system.
+The Minoan civilization was destroyed by a
+volcanic eruption around 1450"
 ```
 
 example using **High max_output_tokens**
@@ -114,7 +122,13 @@ curl -X POST "http://localhost:8000/generate" -H "Content-Type: application/json
 The output :
 
 ```powershell
-"generated_text":"Greece has a long and rich history dating back over 3,000 years. The first major civilization in Greece was the Minoan civilization, which flourished on the island of Crete from around 2700 to 1450 BC. The Minoans were a seafaring  ... every year."
+"generated_text":"Greece has a long and rich history dating back over 3,000 years. The first major
+civilization in Greece was the Minoan civilization, which flourished on the island of Crete from
+around 2700 to 1450 BC. The Minoans were a seafaring
+...
+...
+...
+every year."
 ```
 
 (**Note** : The text was too long)
@@ -128,3 +142,10 @@ The code too actualizes blunder dealing with and appropriate reaction designing.
 ### Docker Integration
 
 Utilizing Docker for arrangement of the FastAPI application gives a few benefits, counting steady and reproducible situations, segregation, and adaptability. Docker typifies the application and its conditions into a holder, guaranteeing that it runs reliably over distinctive situations, from improvement to generation, without issues related to contrasting framework arrangements or lost conditions. This confinement too improves security by keeping the application environment partitioned from the have framework. Besides, Docker disentangles scaling and overseeing different occasions of the application, making it less demanding to handle shifting loads and coordinated with coordination instruments like Kubernetes. Generally, Docker streamlines the arrangement prepare, decreases setup time, and upgrades the unwavering quality of the application.
+
+
+**Thank you and Have a  nice day** ✨✨
+
+## Disclaimer
+
+I don't use the OpenAI API because it keeps giving me errors that show that I have exceeded my usage quota even though I have never used the API before, and I also can't use the OpenAI URL endpoint because I have to pay a fee to access the endpoint. I apologize for this inconvenience.
