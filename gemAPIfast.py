@@ -14,7 +14,7 @@ app = FastAPI()
 
 
 
-genai.configure(api_key="AIzaSyBs3u7IpS5d8ZAY690kmf3r5EevtTurAa4")
+genai.configure(api_key="YOUR_API_KEY")
 
 # Set up the Google Generative AI API with your API key
 @cached(ttl=3600)
