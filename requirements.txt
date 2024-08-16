@@ -1,0 +1,10 @@
+## library needed for Docker Container 
+
+google-generativeai==0.7.2
+aiohttp==3.10.3
+aiocache==0.12.2
+tenacity==9.0.0
+uvicorn==0.30.6
+joblib==1.4.2
+fastapi==0.112.0
+
