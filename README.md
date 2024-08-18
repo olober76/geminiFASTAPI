@@ -1,4 +1,4 @@
-# SL2 Indonesia AI Candidate Test_Duta Kukuh Pribadi
+# GEMINI FATS API 
 
 ## Getting Started
 
